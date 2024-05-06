@@ -3,9 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int signal_received = 0;
+
+void signal_handler(int signum) {
+    signal_received = 1;
+}
+
 int send_bit(char c, int pid)
 {
     int bin = 0;
+
+    signal(SIGUSR1, signal_handler);
     while (bin < 8)
     {
         if ((c & (0x01 << bin)) != 0)
@@ -18,7 +26,8 @@ int send_bit(char c, int pid)
             if (kill(pid, SIGUSR2) == -1)
                 return (0);
         }
-        usleep(1000);
+        while(signal_received == 0);
+        signal_received = 0;
         bin++;
     }
     return (1);
