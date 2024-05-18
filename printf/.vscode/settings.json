@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "printf.h": "c",
+        "compare": "c",
+        "t_type_traits": "c",
+        "stdarg.h": "c",
+        "unistd.h": "c"
+    }
+}
