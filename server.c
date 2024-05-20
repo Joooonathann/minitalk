@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalbiser <jalbiser@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: jalbiser <jalbiser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 19:20:35 by jalbiser          #+#    #+#             */
-/*   Updated: 2024/05/18 21:51:16 by jalbiser         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:11:50 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,29 @@ void delete_client(t_clients *client)
 	free(current);
 }
 
+int	verif_clients(t_clients *client_current)
+{
+	t_clients *clients;
+	int		is_client;
+
+	is_client = 0;
+	clients = g_clients;
+	if (!clients)
+		return (0);
+	while (clients)
+	{
+		if (kill(clients->pid, SIGUSR2) == -1)
+		{
+			if (clients == client_current)
+				is_client = 1;
+			delete_client(clients);
+		}
+		clients = clients->next;
+	}
+	if (is_client)
+		return (1);
+	return (0);
+}
 
 void	handler(int sig, siginfo_t *info, void *context)
 {
@@ -149,6 +172,8 @@ void	handler(int sig, siginfo_t *info, void *context)
 	client = g_clients;
 	while (client->pid != info->si_pid)
 		client = client->next;
+	if (verif_clients(client))
+		return ;
 	if (sig == SIGUSR1)
 		client->c |= (0x01 << client->bits);
 	client->bits++;
