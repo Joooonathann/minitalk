@@ -6,7 +6,7 @@
 /*   By: jalbiser <jalbiser@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 18:47:04 by jalbiser          #+#    #+#             */
-/*   Updated: 2024/05/21 19:15:52 by jalbiser         ###   ########.fr       */
+/*   Updated: 2024/05/21 21:22:46 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static void	send_sig(void)
 
 static void	handler(int sig, siginfo_t *info, void *context)
 {
+	(void) info;
+	(void) context;
 	if (sig == SIGUSR1)
 		send_sig();
 	else

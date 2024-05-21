@@ -2,6 +2,7 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "stdlib.h": "c",
-        "client.h": "c"
+        "client.h": "c",
+        "server.h": "c"
     }
 }
