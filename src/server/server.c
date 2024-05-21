@@ -6,7 +6,7 @@
 /*   By: jalbiser <jalbiser@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:34:38 by jalbiser          #+#    #+#             */
-/*   Updated: 2024/05/21 21:22:59 by jalbiser         ###   ########.fr       */
+/*   Updated: 2024/05/21 21:36:15 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void	char_process(t_clients **client_handler)
 
 static void	handler(int sig, siginfo_t *info, void *context)
 {
-	(void) context;
 	t_clients	*client;
 
+	(void) context;
 	if (!exist_client(info->si_pid, &g_clients))
 	{
 		add_client(info->si_pid);
