@@ -6,7 +6,7 @@
 /*   By: jalbiser <jalbiser@student.42mulhouse.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 19:47:48 by jalbiser          #+#    #+#             */
-/*   Updated: 2024/05/18 21:20:22 by jalbiser         ###   ########.fr       */
+/*   Updated: 2024/05/21 11:04:32 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	handler(int sig, siginfo_t *info, void *context)
 		}
 		g_info.bits++;
 	}
-	else
+	else if (sig == SIGUSR2 && g_info.message[g_info.index] == '\0')
 	{
 		free(g_info.message);
 		ft_printf("Message reçu.\n");
