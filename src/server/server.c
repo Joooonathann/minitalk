@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalbiser <jalbiser@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: jalbiser <jalbiser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 19:34:38 by jalbiser          #+#    #+#             */
-/*   Updated: 2024/05/21 21:36:15 by jalbiser         ###   ########.fr       */
+/*   Updated: 2024/05/22 09:03:43 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ static void	handler(int sig, siginfo_t *info, void *context)
 	if (!exist_client(info->si_pid, &g_clients))
 	{
 		add_client(info->si_pid);
-		kill(info->si_pid, SIGUSR1);
 		usleep(250);
+		kill(info->si_pid, SIGUSR1);
 		return ;
 	}
 	client = get_client(info->si_pid, &g_clients);

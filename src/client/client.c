@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jalbiser <jalbiser@student.42mulhouse.f    +#+  +:+       +#+        */
+/*   By: jalbiser <jalbiser@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 18:47:04 by jalbiser          #+#    #+#             */
-/*   Updated: 2024/05/21 21:22:46 by jalbiser         ###   ########.fr       */
+/*   Updated: 2024/05/22 09:05:27 by jalbiser         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	handler(int sig, siginfo_t *info, void *context)
 	else
 	{
 		free(g_info.message);
-		ft_printf("Message reçu.\n");
+		ft_printf("Message received !\n");
 		exit(0);
 	}
 }
